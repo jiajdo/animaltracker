@@ -21,7 +21,7 @@ SET default_tablespace = '';
 SET default_table_access_method = heap;
 
 --
--- Name: events; Type: TABLE; Schema: public; Owner: -
+-- Name: species; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.species (
@@ -35,7 +35,7 @@ CREATE TABLE public.species (
 
 
 --
--- Name: events_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+-- Name: species_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE public.species_id_seq
@@ -48,43 +48,43 @@ CREATE SEQUENCE public.species_id_seq
 
 
 --
--- Name: events_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+-- Name: species_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE public.species_id_seq OWNED BY public.species.id;
 
 
 --
--- Name: events id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: species id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.species ALTER COLUMN id SET DEFAULT nextval('public.species_id_seq'::regclass);
 
 
 --
--- Data for Name: events; Type: TABLE DATA; Schema: public; Owner: -
+-- Data for Name: species; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 
 -- 
 COPY public.species (id, common_name, scientific_name,  population, conservation_status_code, record_creation_timestamp) FROM stdin;
-1	Simba	Panthera Leo	10	EN	2023-04-21 
-2	Chrono	Loxodonta Africana	30	CR	2023-04-21 
-3	Mufasa	Giraffa Camelopardalis	40	LC	2023-04-21 
-4	Rover	Panthera Tigris	2	CR	2023-04-21 
-5	Spot	Panthera Leo	4	EN	2023-04-21 
+1	Lion	Panthera Leo	10	EN	2023-04-21 
+2	Elephant	Loxodonta Africana	30	CR	2023-04-21 
+3	Giraffe	Giraffa Camelopardalis	40	LC	2023-04-21 
+4	Lion	Panthera Tigris	2	CR	2023-04-21 
+5	Lion	Panthera Leo	4	EN	2023-04-21 
 \.
 
 
 --
--- Name: events_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
+-- Name: species_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('public.species_id_seq', 5, true);
 
 
 --
--- Name: events events_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: species species_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.species

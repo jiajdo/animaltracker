@@ -21,24 +21,27 @@ SET default_tablespace = '';
 SET default_table_access_method = heap;
 
 --
--- Name: events; Type: TABLE; Schema: public; Owner: -
+-- Name:sightings
+; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE public.species (
+CREATE TABLE public.sightings (
     id integer NOT NULL,
-    common_name text,
-    scientific_name text,
-    population integer,
-    conservation_status_code text,
-    record_creation_timestamp timestamp
+    dateandtime text,
+    individual text,
+    sighting_location text,
+    is_healthy BOOLEAN,
+    email_address text,
+    sightings_timestamp timestamp
 );
 
 
 --
--- Name: events_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+-- Name:sightings
+_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE public.species_id_seq
+CREATE SEQUENCE public.sightings_id_seq
     AS integer
     START WITH 1
     INCREMENT BY 1
@@ -48,47 +51,49 @@ CREATE SEQUENCE public.species_id_seq
 
 
 --
--- Name: events_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+-- Name: sightings_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE public.species_id_seq OWNED BY public.species.id;
-
-
---
--- Name: events id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.species ALTER COLUMN id SET DEFAULT nextval('public.species_id_seq'::regclass);
+ALTER SEQUENCE public.sightings_id_seq OWNED BY public.sightings_id_seq.id;
 
 
 --
--- Data for Name: events; Type: TABLE DATA; Schema: public; Owner: -
+-- Name:sightings
+ id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sightings_id_seq ALTER COLUMN id SET DEFAULT nextval('public.sightings_id_seq'::regclass);
+
+
+--
+-- Data for Name:sightings
+; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 
 -- 
-COPY public.species (id, common_name, scientific_name,  population, conservation_status_code, record_creation_timestamp) FROM stdin;
-1	Simba	Panthera Leo	10	EN	2023-04-21 
-2	Chrono	Loxodonta Africana	30	CR	2023-04-21 
-3	Mufasa	Giraffa Camelopardalis	40	LC	2023-04-21 
-4	Rover	Panthera Tigris	2	CR	2023-04-21 
-5	Spot	Panthera Leo	4	EN	2023-04-21 
+COPY public.sightings_id_seq (id, dateandtime, individual, sighting_location, is_healthy, email_address, sightings_timestamp) FROM stdin;
+1	2023-04-01 13:00	Chrono	San Francisco, California true chrono@waymo 2023-04-21 
+2	2023-08-21 12:00	Simba	Yellowstone false jtt@disney.com 2023-04-21 
+3	2023-01-03 00:00	Mufasa  Yosemite true jamesearljones@gmail.com 2023-04-21 
+4	2023-06-16 03:34	Rover	Zion true woof@gmail.com 2023-04-21 
+5	2022-12-25 08:45	Spot	Boston true bark@gmail.com 2023-04-21 
 \.
 
 
 --
--- Name: events_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
+-- Name:sightings
+_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.species_id_seq', 5, true);
-
+SELECT pg_catalog.setval('public.sightings_id_seq', 5, true);
 
 --
--- Name: events events_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: sightings sightings_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.species
-    ADD CONSTRAINT species_pkey PRIMARY KEY (id);
+ALTER TABLE ONLY public.sightings_id_seq
+    ADD CONSTRAINT sightings_id_seq_pkey PRIMARY KEY (id);
 
 
 --
