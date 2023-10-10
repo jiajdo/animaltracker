@@ -12,7 +12,7 @@ const AddSighting = (props) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         const selectedDate = new Date(userDate.current?.value);
-        const userEvent = {species: userSpecies.current?.value, location: userLocation.current?.value, datetime: selectedDate.toISOString(), healthy: userHealthy.current?.checked, sighter_email: userSpotter.current?.value, nickname: userNickname.current?.value, timestamp: new Date()}
+        const userEvent = {species: userSpecies.current?.value, location: userLocation.current?.value, datetime: selectedDate.toISOString(), healthy: userHealthy.current?.checked, sighter_email: userScientist.current?.value, nickname: userNickname.current?.value, timestamp: new Date()}
         handlePostRequest(userEvent);
     }
 
