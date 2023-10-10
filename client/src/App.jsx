@@ -1,9 +1,15 @@
-import { useState } from 'react'
+import { useState } from "react"
+import {Button, Form} from "react-bootstrap"
+import AddSighting from "./components/Form.jsx"
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-import './App.css'
 
 const App = () => {
-  return <>Hi, hello</>
+return  (
+
+<AddSighting></AddSighting>
+)
+
 }
 
 export default App
