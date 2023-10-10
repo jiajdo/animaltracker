@@ -17,7 +17,7 @@ const AddSighting = (props) => {
     }
 
     const handlePostRequest = (data) => {
-        fetch("http://localhost:8080/sightings", {
+        fetch("http://localhost:8080/addSighting", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(data),
