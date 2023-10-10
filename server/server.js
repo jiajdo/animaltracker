@@ -35,21 +35,23 @@ app.get("/species", async (req, res) => {
   }
 });
 
-// Show a list of all sightings, including the nickname of the individual sighted at each one (using a JOIN query)
+// Show a list of all species, including the nickname of the
+//individual sighted at each one (using a JOIN query)
 
 //get all individuals and join with species_id
 
-// app.get('/species/:speciesId', async (req, res) => {
-//   try {
-//     const speciesId = req.params.speciesId;
-//     const result = await db.query(('SELECT individuals.nickname,sightings.email_address,individuals.species_id, species.common_name, species.scientific_name FROM individuals INNER JOIN species ON individuals.species_id = species.species_id WHERE individuals.species_id = $1', [speciesId]);
-//     res.json(result.rows)
-//   }
-//   catch{
-//     console.log(e)
-//     return res.status(400).json({e});
-//   }
-// })
+app.get("/species/:speciesId", async (req, res) => {
+  try {
+    const speciesId = req.params.speciesId;
+    const result = await db.query(
+      "SELECT nickname, species_id FROM individuals INNER JOIN species ON species_id = species_id WHERE species_id = $1", [speciesId]
+    );
+    res.json(result.rows);
+  } catch (e) {
+    console.log(e);
+    return res.status(400).json({e});
+  }
+});
 
 // console.log that your server is up and running
 app.listen(PORT, async () => {
